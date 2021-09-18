@@ -1,3 +1,5 @@
+// import Search from 'magnifying-glass.svg';
+import search from '../assets/magnifying-glass.svg';
 import React, { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
@@ -9,13 +11,6 @@ const uriKey = '&ts=1000&apikey=ca81f171fcb8a38257b8b7d247dd291b&hash=df49aae01b
 function Home() {
 
     const [state, setState] = useState();
-
-    // useEffect(() => {
-    //     async function fetch() {
-    //         const resp = await axios.get(uri);
-
-    //     }
-    // },[])
 
     const { register, handleSubmit } = useForm();
     const onSubmit = data => {
@@ -29,26 +24,30 @@ function Home() {
 
     return (
         <>
-            <span>Home page</span>
+            {/* <span>Home page</span> */}
+            <h2>Search your Marvel Heroes</h2>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <input {...register("name")} />
-                <input value="Search" type="submit" />
+                <input id="text" {...register("name")} />
+                <input id="button" value="SEARCH" type="submit" />
+                {/* <input id="button" type="submit">
+                    <img src={search}/>
+                </input> */}
             </form>
             
             <div className="character__content">
             {
                 !state && 
-                <span>No data</span>
+                <></>
 
             }
             {
                 state?.map(i => {
                     return (
                         <div className="character__item">
+                            <span>{i.id}</span>
                             <span>{i.name}</span>
-                            {/* <p>{i.description}</p> */}
                             <img id="charImg" src={i.thumbnail.path + '.jpg'}/>
-                            <Link to="/character/:id">View More</Link>
+                            <Link to={`/character/${i.id}`}>View More</Link>
                         </div>
                     );
                 })

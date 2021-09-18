@@ -1,6 +1,7 @@
 import './StyleSheet.css';
 import './App.css';
-import Header from './Components/Header'
+import Header from './Components/Header';
+import Footer from './Components/Footer';
 import Home from './Components/Home';
 import { Route, Switch, BrowserRouter } from 'react-router-dom';
 import Character from './Components/Character';
@@ -28,6 +29,7 @@ function App() {
       <BrowserRouter>
         <Navigation/>
       </BrowserRouter>
+      <Footer/>
     </div>
   );
 }

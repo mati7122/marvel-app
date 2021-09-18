@@ -1,8 +1,37 @@
 
+#text{
+    border: 2px solid #000;
+    border-radius: 15px;
+    height: 5vh;
+    margin-right: 1vw;
+}
+
+#button{
+    background-color: #000;
+    color: #fff;
+    /* border: 2px solid #000; */
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    height: 5vh;
+    transition: all .8s;
+    font-weight: 800;
+}
+
+#button:hover{
+    background-color: red;
+}
+
 .character__content{
     display: grid;
     grid-template-columns: repeat(2, 20vw);
     grid-gap: 3vw;
+}
+
+@media (max-width:800px) {
+    .character__content{
+        grid-template-columns: 20vw;
+    }
 }
 
 .character__item{
@@ -14,4 +43,8 @@
 #charImg{
     width: 200px;
     height: 200px;
+}
+
+a{
+    cursor: pointer;
 }
