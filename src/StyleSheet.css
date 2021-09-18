@@ -1,0 +1,17 @@
+
+.character__content{
+    display: grid;
+    grid-template-columns: repeat(2, 20vw);
+    grid-gap: 3vw;
+}
+
+.character__item{
+    border: 1px solid #000;
+    border-radius: 15px;
+    width: fit-content;
+}
+
+#charImg{
+    width: 200px;
+    height: 200px;
+}
