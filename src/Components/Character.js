@@ -29,15 +29,50 @@ function Character(props) {
             {
                 state?.map(i => {
                     return (
-                        <div>
-                            <h2>{i.name}</h2>
-                            <img id="charImg" src={i.thumbnail.path + '.jpg'} />
-                            <p>{i.description}</p>
-                            <span>{i.comics.available}</span>
+                        <div className="containerCharacter">
+                            <section>
+                                <div>
+                                    <h2>{i.name}</h2>
+                                    <img id="charImg" src={i.thumbnail.path + '.jpg'} />
+                                </div>
+                                <div>
+                                    <h2>Bio</h2>
+                                    <p>{i.description}</p>
+                                </div>
+                            </section>
+                            <h1>Comics</h1>
                             <div>
-                                <span>{i.comics.items.map(a => a.name)}</span>
-                      
-                                {/* <img src={i.comics.items.map(a => a.resourceURI + '.jpg')}/> */}
+                                
+                                <h2>Events</h2>
+                                
+                                <span>{i.events.items.map(a => {
+                                    return (
+                                        <div>
+                                            <span>{a.name}</span>
+                                        </div>
+                                    );
+
+                                })}
+                                </span>
+                                <h2>Comics</h2>
+                                <h4>Comics disponibles totales: {i.comics.available}</h4>
+                                <span>{i.comics.items.map(a => {
+                                    return(
+                                        <div>
+                                            <span>{a.name}</span>
+                                            <img src={a.resourceURI + '.png'} />
+                                        </div>
+                                    );
+                                })}</span>
+                                <h2>Series</h2>
+                                <span>{i.series.items.map(a => {
+                                    return (
+                                        <div>
+                                            <span>{a.name}</span>
+                                        </div>
+                                    );
+                                })}
+                                </span>
                             </div>
                         </div>
                     );

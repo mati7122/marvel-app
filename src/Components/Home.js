@@ -23,15 +23,12 @@ function Home() {
     }
 
     return (
-        <>
+        <div className="containerHome">
             {/* <span>Home page</span> */}
-            <h2>Search your Marvel Heroes</h2>
+            <h2>Look for your favorite marvel characters</h2>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <input id="text" {...register("name")} />
                 <input id="button" value="SEARCH" type="submit" />
-                {/* <input id="button" type="submit">
-                    <img src={search}/>
-                </input> */}
             </form>
             
             <div className="character__content">
@@ -44,17 +41,16 @@ function Home() {
                 state?.map(i => {
                     return (
                         <div className="character__item">
-                            <span>{i.id}</span>
                             <span>{i.name}</span>
                             <img id="charImg" src={i.thumbnail.path + '.jpg'}/>
-                            <Link to={`/character/${i.id}`}>View More</Link>
+                            <Link to={`/character/${i.id}`}><span style={{color: '#fff', textDecoration: 'none'}}>View More</span></Link>
                         </div>
                     );
                 })
             }
             </div>
 
-        </>
+        </div>
     );
 }
 

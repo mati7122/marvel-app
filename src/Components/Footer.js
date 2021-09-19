@@ -4,14 +4,16 @@ import portfolio from '../assets/portfolio.svg';
 
 const styles = {
     background: {
+        margin: 0,
+        padding: 0,
         backgroundColor: "red",
         color: '#fff',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        position: 'fixed',
-        left: 0,
-        bottom: 0,
+        // position: 'fixed',
+        // left: 0,
+        // bottom: 0,
         width: '100%'
     },
     img: {

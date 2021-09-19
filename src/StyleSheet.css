@@ -1,3 +1,14 @@
+.containerHome{
+    padding: 0;
+    margin: 0 auto;
+    height: 100%;
+    width: 90%;
+    background-color: #fff;
+}
+
+.containerHome h2{
+    margin: 0;
+}
 
 #text{
     border: 2px solid #000;
@@ -9,7 +20,6 @@
 #button{
     background-color: #000;
     color: #fff;
-    /* border: 2px solid #000; */
     border: none;
     border-radius: 10px;
     cursor: pointer;
@@ -24,7 +34,8 @@
 
 .character__content{
     display: grid;
-    grid-template-columns: repeat(2, 20vw);
+    justify-content: center;
+    grid-template-columns: repeat(4, 20vw);
     grid-gap: 3vw;
 }
 
@@ -35,9 +46,23 @@
 }
 
 .character__item{
-    border: 1px solid #000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #575656;
+    /* border: 1px solid #000; */
     border-radius: 15px;
-    width: fit-content;
+    /* width: fit-content; */
+    color: #fff;
+}
+
+.containerCharacter{
+    color: #fff;
+}
+
+.containerCharacter section{
+    display: flex;
+    align-items: center;
 }
 
 #charImg{
