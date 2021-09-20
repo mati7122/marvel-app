@@ -1,3 +1,4 @@
+import '../StyleSheet.css';
 
 const styles = {
 
@@ -18,10 +19,10 @@ const styles = {
 
 function Header() {
     return (
-        <div style={styles.header}>
-            <img style={styles.img} src={'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Marvel_Logo.svg/1200px-Marvel_Logo.svg.png'}/>
+        <header>
+            <img src={'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Marvel_Logo.svg/1200px-Marvel_Logo.svg.png'} alt="title"/>
             <h1>HEROES APP</h1>
-        </div>
+        </header>
     );
 }
 

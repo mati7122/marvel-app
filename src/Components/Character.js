@@ -21,7 +21,7 @@ function Character(props) {
 
     return (
         <>
-            <h2>Character Info</h2>
+            <h1 style={{color: '#fff'}}>CHARACTER INFO</h1>
             {
                 !state &&
                 <></>
@@ -35,7 +35,7 @@ function Character(props) {
                                     <h2>{i.name}</h2>
                                     <img id="charImg" src={i.thumbnail.path + '.jpg'} />
                                 </div>
-                                <div>
+                                <div className="bio">
                                     <h2>Bio</h2>
                                     <p>{i.description}</p>
                                 </div>
@@ -54,16 +54,16 @@ function Character(props) {
 
                                 })}
                                 </span>
-                                <h2>Comics</h2>
-                                <h4>Comics disponibles totales: {i.comics.available}</h4>
-                                <span>{i.comics.items.map(a => {
+                                {/* <h2>Comics</h2> */}
+                                {/* <h4>Comics disponibles totales: {i.comics.available}</h4> */}
+                                {/* <span>{i.comics.items.map(a => {
                                     return(
                                         <div>
                                             <span>{a.name}</span>
                                             <img src={a.resourceURI + '.png'} />
                                         </div>
                                     );
-                                })}</span>
+                                })}</span> */}
                                 <h2>Series</h2>
                                 <span>{i.series.items.map(a => {
                                     return (

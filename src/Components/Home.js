@@ -25,29 +25,33 @@ function Home() {
     return (
         <div className="containerHome">
             {/* <span>Home page</span> */}
-            <h2>Look for your favorite marvel characters</h2>
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <input id="text" {...register("name")} />
-                <input id="button" value="SEARCH" type="submit" />
-            </form>
-            
-            <div className="character__content">
-            {
-                !state && 
-                <></>
+            <div>
+                <h2>Look for your favorite marvel characters</h2>
+                <form onSubmit={handleSubmit(onSubmit)}>
+                    <input id="text" {...register("name")} />
+                    <input id="button" value="SEARCH" type="submit" />
+                </form>
+            </div>
 
-            }
-            {
-                state?.map(i => {
-                    return (
-                        <div className="character__item">
-                            <span>{i.name}</span>
-                            <img id="charImg" src={i.thumbnail.path + '.jpg'}/>
-                            <Link to={`/character/${i.id}`}><span style={{color: '#fff', textDecoration: 'none'}}>View More</span></Link>
-                        </div>
-                    );
-                })
-            }
+            <div className="character__content">
+                {
+                    !state &&
+                    <>
+                        {/* <img src={}/> */}
+                    </>
+
+                }
+                {
+                    state?.map(i => {
+                        return (
+                            <div className="character__item">
+                                <span>{i.name}</span>
+                                <img id="charImg" src={i.thumbnail.path + '.jpg'} alt="character" />
+                                <Link to={`/character/${i.id}`}><span style={{ color: '#fff', textDecoration: 'none' }}>View More</span></Link>
+                            </div>
+                        );
+                    })
+                }
             </div>
 
         </div>
