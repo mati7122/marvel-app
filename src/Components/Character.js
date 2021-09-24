@@ -5,7 +5,7 @@ import axios from "axios";
 const uri = 'https://gateway.marvel.com:443/v1/public/characters/';
 const uriKey = '?&ts=1000&apikey=ca81f171fcb8a38257b8b7d247dd291b&hash=df49aae01b6118fcb863407bdfabcdc4';
 
-function Character(props) {
+function Character() {
 
     const [state, setState] = useState();
 
@@ -17,6 +17,7 @@ function Character(props) {
             setState(resp.data.data.results);
         }
         fetch();
+        // console.log(state);
     });
 
     return (
@@ -33,19 +34,29 @@ function Character(props) {
                             <section>
                                 <div>
                                     <h2>{i.name}</h2>
-                                    <img id="charImg" src={i.thumbnail.path + '.jpg'} />
+                                    <img id="characterImg" src={i.thumbnail.path + '.jpg'} alt="character"/>
                                 </div>
-                                <div className="bio">
+                                <div className="containerCharacter__bio">
                                     <h2>Bio</h2>
-                                    <p>{i.description}</p>
+
+                                    {i.description &&
+                                        <p>{i.description}</p>
+                                    }
+                                    {!i.description &&
+                                        <p>Not available</p>
+                                    }
                                 </div>
                             </section>
                             <h1>Comics</h1>
-                            <div>
+                            <section className="containerCharacter__comics">
+
+                                <div>
                                 
                                 <h2>Events</h2>
+
+                                {!i.events.items && <span>Not available</span>}
                                 
-                                <span>{i.events.items.map(a => {
+                                {i.events.items.map(a => {
                                     return (
                                         <div>
                                             <span>{a.name}</span>
@@ -53,27 +64,23 @@ function Character(props) {
                                     );
 
                                 })}
-                                </span>
-                                {/* <h2>Comics</h2> */}
-                                {/* <h4>Comics disponibles totales: {i.comics.available}</h4> */}
-                                {/* <span>{i.comics.items.map(a => {
-                                    return(
-                                        <div>
-                                            <span>{a.name}</span>
-                                            <img src={a.resourceURI + '.png'} />
-                                        </div>
-                                    );
-                                })}</span> */}
+
+                                </div>
+
+                                <div>
                                 <h2>Series</h2>
-                                <span>{i.series.items.map(a => {
+
+                                {!i.series.items && <span>Not available</span>}
+
+                                {i.series.items.map(a => {
                                     return (
                                         <div>
                                             <span>{a.name}</span>
                                         </div>
                                     );
                                 })}
-                                </span>
-                            </div>
+                                </div>
+                            </section>
                         </div>
                     );
                 })

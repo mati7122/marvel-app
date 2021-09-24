@@ -1,21 +1,21 @@
 import '../StyleSheet.css';
 
-const styles = {
+// const styles = {
 
-    header: {
-        margin: 0,
-        backgroundColor: 'red',
-        color: '#fff',
-        display: 'flex',
-        alignItems: 'center'
-    },
+//     header: {
+//         margin: 0,
+//         backgroundColor: 'red',
+//         color: '#fff',
+//         display: 'flex',
+//         alignItems: 'center'
+//     },
 
-    img: {
-        width: 200,
-        height: 100
-    }
+//     img: {
+//         width: 200,
+//         height: 100
+//     }
 
-}
+// }
 
 function Header() {
     return (

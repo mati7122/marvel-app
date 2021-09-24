@@ -1,59 +1,61 @@
-// import Search from 'magnifying-glass.svg';
-import search from '../assets/magnifying-glass.svg';
-import React, { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+import CharacterItem from './CharacterItem';
+import Load from './Load';
 
 const uri = 'http://gateway.marvel.com/v1/public/characters?nameStartsWith=';
 const uriKey = '&ts=1000&apikey=ca81f171fcb8a38257b8b7d247dd291b&hash=df49aae01b6118fcb863407bdfabcdc4';
 
 function Home() {
 
+    let resp;
+
     const [state, setState] = useState();
 
     const { register, handleSubmit } = useForm();
     const onSubmit = data => {
         async function fetch() {
-            const resp = await axios.get(uri + data.name + uriKey);
-            setState(resp.data.data.results);
+            axios.get(uri + data.name.toLowerCase() + uriKey)
+                .then(res => {
+                    resp = res;
+                    setState(resp.data.data.results);
+                })
+                .catch(() => {
+                    alert('the limit of requests to the marvel api has been reached, try again later')
+                })
         }
         fetch();
-        console.log(state);
+        // console.log(state);
     }
 
     return (
-        <div className="containerHome">
-            {/* <span>Home page</span> */}
+        <div className="containerHome" id="containerHome">
             <div>
-                <h2>Look for your favorite marvel characters</h2>
+                <h2 style={{ color: '#fff' }}>Look for your favorite marvel characters</h2>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <input id="text" {...register("name")} />
                     <input id="button" value="SEARCH" type="submit" />
                 </form>
             </div>
 
+            {
+                !state &&
+                <Load/>
+
+            }
             <div className="character__content">
                 {
-                    !state &&
-                    <>
-                        {/* <img src={}/> */}
-                    </>
-
-                }
-                {
-                    state?.map(i => {
+                    state &&
+                    state.map(i => {
                         return (
-                            <div className="character__item">
-                                <span>{i.name}</span>
-                                <img id="charImg" src={i.thumbnail.path + '.jpg'} alt="character" />
-                                <Link to={`/character/${i.id}`}><span style={{ color: '#fff', textDecoration: 'none' }}>View More</span></Link>
-                            </div>
+
+                            <CharacterItem name={i.name} image={i.thumbnail.path + '.jpg'} id={i.id}/>
+
                         );
                     })
                 }
             </div>
-
         </div>
     );
 }
